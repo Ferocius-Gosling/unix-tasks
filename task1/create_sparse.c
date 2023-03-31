@@ -56,7 +56,7 @@ void create_sparse_file(int input, int output, int block_size){
 }
 
 int main(int argc, char *argv[]){
-	int input;
+	int input = 0;
 	int output;
 	int block_size = 4096;
 	
