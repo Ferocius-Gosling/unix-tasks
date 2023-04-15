@@ -1,0 +1,15 @@
+Can't delete .lck file
+removing test
+.lck file was corrupted
+corrupting test
+Success tasks : 10
+task1 : 31
+task2 : 27
+task3 : 27
+task4 : 36
+task5 : 32
+task6 : 29
+task7 : 24
+task8 : 38
+task9 : 34
+task10 : 21
