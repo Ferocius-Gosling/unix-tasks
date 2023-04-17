@@ -12,6 +12,8 @@ trap 'sigint_handler' INT
 while true
 do
     ./locker $1 1
-    ((lock_sum=$lock_sum+1))
-
+    if [[ $? -eq 0 ]]
+    then
+        ((lock_sum=$lock_sum+1))
+    fi
 done
