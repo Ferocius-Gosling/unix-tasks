@@ -1,0 +1,34 @@
+First three tasks:
+vboxuser    3908    1107  0 22:42 ?        00:00:00 /bin/sleep 50
+vboxuser    3938    1107  0 22:43 ?        00:00:00 /bin/sleep 50
+vboxuser    3949    3948  0 22:43 ?        00:00:00 /bin/sleep 5
+vboxuser    3950    3948  0 22:43 ?        00:00:00 /bin/sleep 6
+vboxuser    3951    3948  0 22:43 ?        00:00:00 /bin/sleep 7
+vboxuser    3953    3942  0 22:43 pts/1    00:00:00 grep /bin/sleep
+After kill second task:
+vboxuser    3908    1107  0 22:42 ?        00:00:00 /bin/sleep 50
+vboxuser    3938    1107  0 22:43 ?        00:00:00 /bin/sleep 50
+vboxuser    3949    3948  0 22:43 ?        00:00:00 /bin/sleep 5
+vboxuser    3951    3948  0 22:43 ?        00:00:00 /bin/sleep 7
+vboxuser    3955    3948  0 22:43 ?        00:00:00 /bin/sleep 6
+vboxuser    3958    3942  0 22:43 pts/1    00:00:00 grep /bin/sleep
+After sending sighup to daemon:
+vboxuser    3908    1107  0 22:42 ?        00:00:00 /bin/sleep 50
+vboxuser    3938    1107  0 22:43 ?        00:00:00 /bin/sleep 50
+vboxuser    3964    3948  0 22:43 ?        00:00:00 /bin/sleep 50
+vboxuser    3966    3942  0 22:43 pts/1    00:00:00 grep /bin/sleep
+Logs from file:
+Start daemon
+Fork instance 0 started and his pid: 3949
+Fork instance 1 started and his pid: 3950
+Fork instance 2 started and his pid: 3951
+Child with number 1 and pid: 3950 finished
+Fork instance 1 started and his pid: 3955
+Child with number 0 and pid: 3949 finished
+Fork instance 0 started and his pid: 3960
+Child with number 1 and pid: 3955 finished
+Fork instance 1 started and his pid: 3961
+Child with number 2 and pid: 3951 finished
+Fork instance 2 started and his pid: 3962
+Handling hup-signal. Updating config, restarting processes
+Fork instance 0 started and his pid: 3964
