@@ -125,22 +125,12 @@ FILE* open_log() {
     FILE *log = fopen("/tmp/myinit.log", "wa");
     fwrite("Start daemon\n", 1, sizeof("Start daemon"), log);
     fflush(log);
-    // if (errno){
-    //     printf("Error while writing in log file\n");
-    //     fflush(stdout);
-    //     exit(1);
-    // }
     return log;
 }
 
 void write_log(char *message, FILE *log) {
-    fwrite(message, 1, strlen(message), log);
+    fwrite(message, 1, strlen(message), log); //потенциально убьёт всё
     fflush(log);
-    // if (errno){
-    //     printf("Error while writing in log file\n");
-    //     fflush(stdout);
-    //     exit(1);
-    // }
 }
 
 void change_streams(struct config_info conf) {
@@ -152,10 +142,8 @@ struct task_info parse_args(char str[MAX_LINE_LENGTH]) {
     char buffer[MAX_LINE_LENGTH];
     strcpy(buffer, str);
     struct task_info t_info;
-    char **array = NULL; //буферный массив. СУКА. ёкарный бабай.
+    char **array = NULL; //буферный массив.
     char *split = strtok(buffer, " "); // получили первую строку до пробела(название)
-    // strcpy(t_info.name, split);
-    // split = strtok(NULL, " "); //находим некст аргумент
 
     int args_count = 0;
     while (split != NULL) // в сплите находится либо нулл, либо аргумент. его размер неизвестен, там указатель.
@@ -170,9 +158,7 @@ struct task_info parse_args(char str[MAX_LINE_LENGTH]) {
     array[args_count - 1] = NULL;
     t_info.args_count = args_count;
     t_info.args = array; // вот здесь потенциальная утечка
-    // for (int i = 0; i < args_count; i++) {
-    //     strcpy(t_info.args[i], array[i]);
-    // }
+    
     return t_info;
 }
 
@@ -181,22 +167,12 @@ pid_t start_proc(struct task_info t_info, FILE *log, int task_number) {
     pid_t cpid = fork();
     switch(cpid){
         case -1:
-            // printf("Fork error: cpid == -1\n");
             write_log("Fork error: cpid == -1\n", log);
             break;
         case 0: //мы родились вот тут надо запустить то чо в конфиге указано
             // в теории надо уметь стартовать таск, затем его перезапускать.
             // умирать разрешается только в сигхупе.
-            // чтобы его стартануть надо как-то аргументы распарсить.                 
-            //const char *task_args[t_info.args_count + 1] = t_info.args;
-            // printf("%d\n", t_info[p].args_count);
-            // fflush(stdout);
-            // printf("%s\n", t_info[p].args[0]);
-            // fflush(stdout);
-            // printf("%s\n", t_info[p].args[1]);
-            // fflush(stdout);
-            // printf("%p\n", t_info[p].args[2]);
-            // fflush(stdout);
+            // чтобы его стартануть надо как-то аргументы распарсить.    
             execv(t_info.args[0], t_info.args);
             break;
         default:
@@ -239,8 +215,6 @@ void run(struct config_info conf, FILE *log) {
 }
 
 void sighup_handler(int sig){
-    //signal(SIGHUP, sighup_handler);
-
     for (int p = 0; p < MAX_SUBPROCCESS; p++){
         if (pid_list[p] != 0)
             kill(pid_list[p], SIGKILL);
@@ -271,16 +245,10 @@ int main(int argc, char *argv[]){
     // куда-то сюда надо будет вернуться после сигхупа
 
     struct config_info conf = read_config_file(config_filename); // прочитали файл
-    //printf("%s\n", conf.path_to_stdin);
     check_conf_for_absolute_paths(conf); // проверили пути на абсолютность
     change_streams(conf);   // перенаправили потоки
     log_file = open_log(); // Открыли лог
 
-    //struct task_info t = parse_args(conf.path_to_executable[0]);
-
     run(conf, log_file);
-
-    //printf("Running is over\n");
-    //sleep(10);
     return 0;
 }
