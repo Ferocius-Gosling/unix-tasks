@@ -31,24 +31,11 @@ char* get_socketname_from_config(char config_name[], char* sock_name) {
     return sock_name;
 }
 
-FILE* open_log() {
-    FILE *log = fopen("/tmp/client.log", "wa");
-    // fwrite("Start server\n", 1, sizeof("Start server"), log);
-    // fflush(log);
-    return log;
-}
-
-void write_log(char *message, FILE *log) {
-    fwrite(message, 1, strlen(message), log);
-    fflush(log);
-}
-
 int main(int argc, char *argv[]) {
     int sock_fd;
     socklen_t len;
     struct sockaddr_un address;
     int result;
-    //int is_running = 1;
     char *to_send = NULL;
     char *to_recv = NULL;
     char *from_urandom = NULL;
@@ -65,7 +52,6 @@ int main(int argc, char *argv[]) {
     int num_reads = atoi(argv[2]);
     int id = atoi(argv[3]);
     float sleep_time = atof(argv[4]) * 1000000; 
-    //printf("sleep time %f\n", sleep_time);
 
     get_socketname_from_config(argv[1], name_buf);
     sprintf(socket_name, "/tmp/%s", name_buf);
@@ -77,7 +63,6 @@ int main(int argc, char *argv[]) {
     strcpy(address.sun_path, socket_name);
     len = sizeof(address);
 
-    //FILE *log = open_log();
     FILE *file = fopen("/dev/urandom", "r");
     result = connect(sock_fd, (struct sockaddr *)&address, len);
 
@@ -89,7 +74,6 @@ int main(int argc, char *argv[]) {
     fread(&seed, sizeof(int), 1, file);
     srand(seed);
     struct tms begin, end;
-    //times(&begin);
     time_t t0 = time(0);
 
     for(int i = 0; i < num_reads; i++) {
@@ -109,17 +93,11 @@ int main(int argc, char *argv[]) {
         free(to_send);
         free(to_recv);
     }
-    //times(&end);
     time_t t1 = time(0);
 
     double time_in_seconds = difftime(t1, t0);
-    //int times_in_seconds = (end.tms_utime - begin.tms_utime);
-    //char *log_msg = malloc(MAX_LINE_LENGTH);
-    printf(/*log_msg, */"%f\n", time_in_seconds);
-    //printf(/*log_msg, */"%d\n", times_in_seconds);
-    //write_log(log_msg, log);
+    printf("%f\n", time_in_seconds);
     close(sock_fd);
-    //free(log_msg);
     free(name_buf);
     
     return 0;

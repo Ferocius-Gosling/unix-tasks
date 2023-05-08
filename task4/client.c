@@ -25,7 +25,6 @@ char* get_socketname_from_config(char config_name[], char* sock_name) {
 
     char buffer[MAX_LINE_LENGTH];
     fgets(buffer, MAX_LINE_LENGTH, config_file);
-    //char* p_buffer;
     strcpy(sock_name, buffer);
     return sock_name;
 }
@@ -35,7 +34,6 @@ int main(int argc, char *argv[]) {
     socklen_t len;
     struct sockaddr_un address;
     int result;
-    //int is_running = 1;
     char *to_send = NULL;
     char *to_recv = NULL;
 
@@ -68,49 +66,18 @@ int main(int argc, char *argv[]) {
     }
 
     for(int i = 0; i < num_reads; i++) {
-
         to_recv = malloc(READ_MAX + 1);
         to_send = malloc(READ_MAX + 1);
-        //printf("before reading\n");
         scanf("%10s", to_send);
-        //printf("after reading %s\n", to_send);
-        //printf("sock_fd %d\n", sock_fd);
-
-        // int error = 0;
-        // socklen_t len = sizeof (error);
-        // int retval = getsockopt (sock_fd, SOL_SOCKET, SO_ERROR, &error, &len);
-        // if (retval != 0) {
-        //     /* there was a problem getting the error code */
-        //     printf("error getting socket error code: %s\n", strerror(retval));
-        //     return 1;
-        // }
-
-        // if (error != 0) {
-        //     /* socket has a non zero error status */
-        //     printf("socket error: %s\n", strerror(error));
-        // }
-        //printf("well, this is shit %d %d\n ", retval, error);
-        int w = write(sock_fd, to_send, strlen(to_send));
-        //printf("i write to server %d bytes\n", w);
-
-        // int q1 = read(sock_fd, to_recv, READ_MAX);
-        // printf("i read from server %d bytes\n", q1);
-
-        // int q2 = write(sock_fd, "1234", 4);
-        // printf("i write to server 1234 and %d bytes\n", q2);
-
-        //perror("ERROR");
-        //printf("%d write\n", w);
-        int r = read(sock_fd, to_recv, READ_MAX);
-        //printf("%d read\n", r);
-        //printf("char from server = %s\n", to_recv);
+        
+        write(sock_fd, to_send, strlen(to_send));
+        read(sock_fd, to_recv, READ_MAX);
+        
         free(to_send);
         free(to_recv);
     }
-    //printf("i quit cycle\n");
     close(sock_fd);
     free(name_buf);
-    //free(to_send);
     
     return 0;
 }

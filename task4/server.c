@@ -109,14 +109,9 @@ int main(int argc, char *argv[]) {
     // слушаем сокет и ставим макс число в очереди.
     listen(master_socket, MAX_BACKLOG);
 
-    // int client_fd = accept(master_socket,
-    //                        NULL,
-    //                        NULL);
     printf("Server initialized\n");
 
     while (1) {
-        //char *num_from_client = malloc(READ_MAX); // never forget to allocate memory
-        //char num_to_client[READ_MAX];
         int num;
 
         FD_ZERO(&readfds); //почистили сет
@@ -177,11 +172,9 @@ int main(int argc, char *argv[]) {
                     write_log(num_from_client, log);
                     write_log("\n", log);
                     num = atoi(num_from_client);
-                    //printf("%d from client\n", num);
                     
                     state += num;
                     sprintf(num_to_client, "%d", state);
-                    //printf("current state is %s\n", num_to_client);
                     write_log("Sending state to client: ", log);
                     write_log(num_to_client, log);
                     write_log("\n", log);
@@ -191,32 +184,7 @@ int main(int argc, char *argv[]) {
             free(num_from_client);
             free(num_to_client);
         }
-
-        // printf("Server waiting\n");
-
-        // socklen_t client_len = sizeof(client_addr);
-
-        // printf("%d is client fd", client_fd);
-        // int r = read(client_fd, num_from_client, READ_MAX);
-        // if (r == -1) {
-        //     printf("%d socket\n", client_fd);
-        //     printf("%s num from client\n", num_from_client);
-        //     perror("reading error");
-        //     return 1;
-        // }
-
-        // num = atoi(num_from_client);
-        // printf("%d from client\n", num);
-        // state += num;
-        // sprintf(num_to_client, "%d", state);
-        // printf("current state is %s\n", num_to_client);
-        // write(client_fd, num_to_client, READ_MAX);
-        //printf("i closed client_fd");
-        
     }
-    // printf("%d sock descriptor, and server socket name %s\n", master_socket, serv_addr.sun_path);
-
-    // printf("socket name is %s\n", socket_name);
     
     close(master_socket);
     free(name_buf);
