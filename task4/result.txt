@@ -1,0 +1,125 @@
+First attempt completed
+Three attempts completed
+There is first and last logs in /tmp/server.log
+4:Accept socket 6. Current value of sbrk() is -490733568
+600310:Accept socket 6. Current value of sbrk() is -490733568
+Results for 5 clients and delay 0 :
+Longest client working for 000000 seconds
+Total of 0 seconds elapsed for process
+Total efficiency 0 seconds elapsed
+Results for 5 clients and delay 0.2 :
+Longest client working for 4 seconds
+Total of 4 seconds elapsed for process
+Total efficiency 0 seconds elapsed
+Results for 5 clients and delay 0.4 :
+Longest client working for 8 seconds
+Total of 8 seconds elapsed for process
+Total efficiency 0 seconds elapsed
+Results for 5 clients and delay 0.6 :
+Longest client working for 13 seconds
+Total of 13 seconds elapsed for process
+Total efficiency 0 seconds elapsed
+Results for 5 clients and delay 0.8 :
+Longest client working for 16 seconds
+Total of 16 seconds elapsed for process
+Total efficiency 0 seconds elapsed
+Results for 5 clients and delay 1 :
+Longest client working for 20 seconds
+Total of 21 seconds elapsed for process
+Total efficiency 1 seconds elapsed
+Results for 25 clients and delay 0 :
+Longest client working for 000000 seconds
+Total of 0 seconds elapsed for process
+Total efficiency 0 seconds elapsed
+Results for 25 clients and delay 0.2 :
+Longest client working for 5 seconds
+Total of 5 seconds elapsed for process
+Total efficiency 0 seconds elapsed
+Results for 25 clients and delay 0.4 :
+Longest client working for 8 seconds
+Total of 8 seconds elapsed for process
+Total efficiency 0 seconds elapsed
+Results for 25 clients and delay 0.6 :
+Longest client working for 13 seconds
+Total of 13 seconds elapsed for process
+Total efficiency 0 seconds elapsed
+Results for 25 clients and delay 0.8 :
+Longest client working for 16 seconds
+Total of 16 seconds elapsed for process
+Total efficiency 0 seconds elapsed
+Results for 25 clients and delay 1 :
+Longest client working for 21 seconds
+Total of 21 seconds elapsed for process
+Total efficiency 0 seconds elapsed
+Results for 50 clients and delay 0 :
+Longest client working for 000000 seconds
+Total of 1 seconds elapsed for process
+Total efficiency 1 seconds elapsed
+Results for 50 clients and delay 0.2 :
+Longest client working for 4 seconds
+Total of 4 seconds elapsed for process
+Total efficiency 0 seconds elapsed
+Results for 50 clients and delay 0.4 :
+Longest client working for 9 seconds
+Total of 9 seconds elapsed for process
+Total efficiency 0 seconds elapsed
+Results for 50 clients and delay 0.6 :
+Longest client working for 12 seconds
+Total of 12 seconds elapsed for process
+Total efficiency 0 seconds elapsed
+Results for 50 clients and delay 0.8 :
+Longest client working for 17 seconds
+Total of 17 seconds elapsed for process
+Total efficiency 0 seconds elapsed
+Results for 50 clients and delay 1 :
+Longest client working for 20 seconds
+Total of 20 seconds elapsed for server
+Total efficiency 0 seconds elapsed
+Results for 75 clients and delay 0 :
+Longest client working for 000000 seconds
+Total of 1 seconds elapsed for server
+Total efficiency 1 seconds elapsed
+Results for 75 clients and delay 0.2 :
+Longest client working for 5 seconds
+Total of 5 seconds elapsed for server
+Total efficiency 0 seconds elapsed
+Results for 75 clients and delay 0.4 :
+Longest client working for 8 seconds
+Total of 9 seconds elapsed for server
+Total efficiency 1 seconds elapsed
+Results for 75 clients and delay 0.6 :
+Longest client working for 12 seconds
+Total of 12 seconds elapsed for server
+Total efficiency 0 seconds elapsed
+Results for 75 clients and delay 0.8 :
+Longest client working for 16 seconds
+Total of 17 seconds elapsed for server
+Total efficiency 1 seconds elapsed
+Results for 75 clients and delay 1 :
+Longest client working for 21 seconds
+Total of 21 seconds elapsed for server
+Total efficiency 0 seconds elapsed
+Results for 100 clients and delay 0 :
+Longest client working for 1 seconds
+Total of 1 seconds elapsed for server
+Total efficiency 0 seconds elapsed
+Results for 100 clients and delay 0.2 :
+Longest client working for 5 seconds
+Total of 5 seconds elapsed for server
+Total efficiency 0 seconds elapsed
+Results for 100 clients and delay 0.4 :
+Longest client working for 9 seconds
+Total of 9 seconds elapsed for server
+Total efficiency 0 seconds elapsed
+Results for 100 clients and delay 0.6 :
+Longest client working for 13 seconds
+Total of 13 seconds elapsed for server
+Total efficiency 0 seconds elapsed
+Results for 100 clients and delay 0.8 :
+Longest client working for 17 seconds
+Total of 17 seconds elapsed for server
+Total efficiency 0 seconds elapsed
+Results for 100 clients and delay 1 :
+Longest client working for 20 seconds
+Total of 22 seconds elapsed for server
+Total efficiency 2 seconds elapsed
